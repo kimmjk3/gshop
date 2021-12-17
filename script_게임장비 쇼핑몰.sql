@@ -57,7 +57,7 @@ CREATE TABLE `Board` (
 	`board_Number`	INT	NOT null auto_increment primary key	COMMENT 'AUTO_INCREMENT 추가',
 	`board_Name`	VARCHAR(20)	NOT NULL,
 	`board_inputDate`	DATETIME	NOT NULL	DEFAULT NOW(),
-	`board_Corrent`	DATETIME	NULL,
+	`board_Correct`	DATETIME	NULL,
 	`board_DeleteDate`	DATETIME	NULL
 );
 
@@ -81,7 +81,7 @@ CREATE TABLE `Post` (
 	`post_Category`	INT	NOT NULL	COMMENT '1: 마우스 2:키보드',
 	`post_Score`	VARCHAR(20)	NOT NULL,
 	`post_InputDate`	DATETIME	NOT NULL	DEFAULT NOW(),
-	`post_Corrent`	DATETIME	NULL,
+	`post_Correct`	DATETIME	NULL,
 	`post_DeleteDate`	DATETIME	NULL,
 	`post_Recommend`	INT	NOT NULL	DEFAULT 0,
 	`user_ID`	VARCHAR(20)	NOT NULL
@@ -93,7 +93,7 @@ CREATE TABLE `Comment` (
 	`board_Number`	INT	NOT NULL,
 	`comment_Contents`	VARCHAR(1000)	NOT NULL,
 	`comment_InputDate`	DATETIME	NOT NULL	DEFAULT NOW(),
-	`comment_Corrent`	DATETIME	NULL,
+	`comment_Correct`	DATETIME	NULL,
 	`comment_DeleteDate`	DATETIME	NULL,
 	`comment_Recommend`	INT	NOT NULL	DEFAULT 0,
 	`user_ID`	VARCHAR(20)	NOT NULL
