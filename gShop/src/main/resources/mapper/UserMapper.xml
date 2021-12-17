@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.UserMapper">
+
+<spl id="userColumns">
+    userID,
+    userPW,
+    userName,
+    userGender,
+    userDOB,
+    userAddress1,
+    userAddress2,
+    userAddress3,
+    userPhone,
+    userEmail,
+    userJoinDate,
+    userSecessionDate,
+    user_Authority,
+    user_State,
+
+
+</spl>
+
+
+</mapper>
