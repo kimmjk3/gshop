@@ -3,23 +3,23 @@
 
 <mapper namespace="com.board.mapper.BoardMapper">
 
-    <sql id="boardColumns">
-          post_Number
-        , board_Number
-        , post_Title
+    <sql id="Post">
+          post_Number       <!--게시글 번호-->
+        , board_Number      <!--게시판 번호-->
+        , post_Title        <!--게시글 제목-->
         , post_Contents
         , post_Category
         , post_Score
         , post_InputDate
         , post_Correct
-        , insert_time
-        , update_time
-        , delete_time
+        , post_DeleteDate
+        , post_Recommend
+        , user_ID
     </sql>
 
     <insert id="insertBoard" parameterType="BoardDTO">
         INSERT INTO tb_board (
-            <include refid="boardColumns" />
+            <include refid="Post" />
         ) VALUES (
               #{idx}
             , #{title}
@@ -37,7 +37,7 @@
 
     <select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
         SELECT
-            <include refid="boardColumns" />
+            <include refid="Post" />
         FROM
             tb_board
         WHERE
@@ -70,7 +70,7 @@
 
     <select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
         SELECT
-            <include refid="boardColumns" />
+            <include refid="Post" />
         FROM
             tb_board
         WHERE
