@@ -25,7 +25,7 @@ class MapperTests {
         params.setUserID("idid1234");
 
         int result = boardMapper.insertBoard(params);
-        System.out.println("결과는 " + result + "입니다.");
+        System.out.println("결과는 " + result + "입니다..");
     }
 
 }
