@@ -79,7 +79,7 @@ CREATE TABLE `Post` (
 	`post_Title`	VARCHAR(100)	NOT NULL,
 	`post_Contents`	VARCHAR(1000)	NOT NULL,
 	`post_Category`	INT	NOT NULL	COMMENT '1: 마우스 2:키보드',
-	`post_Score`	VARCHAR(20)	NOT NULL,
+	`post_Score`	INT	NOT NULL,
 	`post_InputDate`	DATETIME	NOT NULL	DEFAULT NOW(),
 	`post_Correct`	DATETIME	NULL,
 	`post_DeleteDate`	DATETIME	NULL,
