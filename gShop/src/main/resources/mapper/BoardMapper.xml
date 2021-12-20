@@ -16,7 +16,7 @@
         , post_Recommend    <!--게시글 추천수-->
         , user_ID           <!--게시글 작성자-->
     </sql>
-
+    
     <!--게시글 작성-->
     <insert id="insertBoard" parameterType="BoardDTO">
         INSERT INTO Post (
