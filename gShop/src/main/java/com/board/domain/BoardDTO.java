@@ -16,5 +16,5 @@ public class BoardDTO {
     String postCorrent;
     String postDeleteDate;
     int postRecommend;
-    int userID;
+    String userID;
 }

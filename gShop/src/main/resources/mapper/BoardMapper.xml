@@ -7,87 +7,91 @@
           post_Number       <!--게시글 번호-->
         , board_Number      <!--게시판 번호-->
         , post_Title        <!--게시글 제목-->
-        , post_Contents
-        , post_Category
-        , post_Score
-        , post_InputDate
-        , post_Correct
-        , post_DeleteDate
-        , post_Recommend
-        , user_ID
+        , post_Contents     <!--게시글 내용-->
+        , post_Category     <!--게시글 카테고리-->
+        , post_Score        <!--게시글 별점-->
+        , post_InputDate    <!--게시글 작성일-->
+        , post_Correct      <!--게시글 수정일-->
+        , post_DeleteDate   <!--게시글 삭제일-->
+        , post_Recommend    <!--게시글 추천수-->
+        , user_ID           <!--게시글 작성자-->
     </sql>
 
+    <!--게시글 작성-->
     <insert id="insertBoard" parameterType="BoardDTO">
-        INSERT INTO tb_board (
+        INSERT INTO Post (
             <include refid="Post" />
         ) VALUES (
-              #{idx}
-            , #{title}
-            , #{content}
-            , #{writer}
-            , 0
-            , IFNULL(#{noticeYn}, 'N')
-            , IFNULL(#{secretYn}, 'N')
-            , 'N'
+              DEFAULT
+            , #{boardNumber}
+            , #{postTitle}
+            , #{postContents}
+            , #{postCategory}
+            , #{postScore}
             , NOW()
             , NULL
             , NULL
+            , DEFAULT
+            , #{userID}
         )
     </insert>
-
+    
+    <!--게시글 보기-->
     <select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
         SELECT
             <include refid="Post" />
         FROM
-            tb_board
+            Post
         WHERE
-            delete_yn = 'N'
+            post_DeleteDate IS NULL
         AND
-            idx = #{idx}
+            post_Number = #{postNumber}
     </select>
 
+    <!--게시글 수정-->
     <update id="updateBoard" parameterType="BoardDTO">
-        UPDATE tb_board
+        UPDATE Post
         SET
-              update_time = NOW()
-            , title = #{title}
-            , content = #{content}
-            , writer = #{writer}
-            , notice_yn = IFNULL(#{noticeYn}, 'N')
-            , secret_yn = IFNULL(#{secretYn}, 'N')
+              board_Number = #{boardNumber}
+            , post_Title = #{postTitle}
+            , post_Contents = #{postContents}
+            , post_Category = #{postCategory}
+            , post_Score = #{postScore}
+            , post_Correct = NOW()
+            , user_ID = #{userID}
         WHERE
-            idx = #{idx}
+            post_Number = #{postNumber}
     </update>
 
+    <!--게시글 삭제-->
     <update id="deleteBoard" parameterType="long">
-        UPDATE tb_board
+        UPDATE Post
         SET
-              delete_yn = 'Y'
-            , delete_time = NOW()
+            post_DeleteDate = NOW()
         WHERE
-            idx = #{idx}
+            post_Number = #{postNumber}
     </update>
 
+    <!--게시글 전체조회-->
     <select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
         SELECT
             <include refid="Post" />
         FROM
-            tb_board
+            Post
         WHERE
-            delete_yn = 'N'
+            post_DeleteDate IS NULL
         ORDER BY
-            notice_yn ASC,
-            idx DESC,
-            insert_time DESC
+            post_Number DESC,
+            post_InputDate DESC
     </select>
 
     <select id="selectBoardTotalCount" parameterType="BoardDTO" resultType="int">
         SELECT
             COUNT(*)
         FROM
-            tb_board
+            Post
         WHERE
-            delete_yn = 'N'
+            post_DeleteDate IS NULL
     </select>
 
 </mapper>
