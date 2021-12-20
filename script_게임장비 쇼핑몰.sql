@@ -264,7 +264,7 @@ INSERT INTO Post
             , NULL
             , default
             , 'idid1234'
-        )
+        );
 
 select * from user;
 select * from product;
