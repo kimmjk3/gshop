@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mappers.UserMapper">
+<mapper namespace="com.board.mapper.UserMapper">
 
-<spl id="userColumns">
+<sql id="userColumns">
     userID,
     userPW,
     userName,
@@ -19,7 +19,52 @@
     user_State,
 
 
-</spl>
+</sql>
 
+<insert id="insertUser" parameterType="UserDTO">
+INSERT INTO User(
+    <include refid="userColumns" />
+
+)VALUES(
+#{userID},
+#{userPW},
+#{userName},
+#{userGender},
+#{userDOB},
+#{userAddress1},
+#{userAddress2},
+#{userAddress3},
+#{userPhone},
+#{userEmail},
+#NOW(),
+#NULL,
+#1,
+#1
+
+)
+</insert>
+
+<select id="selectUserDetail" parameterType="String" resultType="UserDTO">
+        SELECT
+            <include refid="userColumns" />
+        FROM
+             User
+        WHERE
+            userState = 1
+        AND
+           userID= #{userID}
+            
+</select>
+
+<update id="updateUser" parameterType="UserDTO">
+        UPDATE User
+        SET
+          userPW= #{userPW},
+          userAddress1= #{userAddress1},
+          userAddress2= #{userAddress2},
+          userAddress3= #{userAddress3}
+        WHERE
+           userID= #{userID}   
+</update>
 
 </mapper>
