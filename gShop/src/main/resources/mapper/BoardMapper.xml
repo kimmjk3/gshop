@@ -37,7 +37,7 @@
     </insert>
     
     <!--게시글 보기-->
-    <select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
+    <select id="selectBoardDetail" parameterType="Integer" resultType="BoardDTO">
         SELECT
             <include refid="Post" />
         FROM
@@ -63,7 +63,7 @@
     </update>
 
     <!--게시글 삭제-->
-    <update id="deleteBoard" parameterType="long">
+    <update id="deleteBoard" parameterType="Integer">
         UPDATE Post
         SET
             post_DeleteDate = NOW()

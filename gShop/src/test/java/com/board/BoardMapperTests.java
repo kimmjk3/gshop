@@ -13,7 +13,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
-class MapperTests {
+class BoardMapperTests {
 
     @Autowired
     private BoardMapper boardMapper;

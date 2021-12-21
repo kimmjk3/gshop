@@ -11,11 +11,11 @@ public interface BoardMapper {
 
     public int insertBoard(BoardDTO params);
 
-    public BoardDTO selectBoardDetail(Long idx);
+    public BoardDTO selectBoardDetail(Integer idx);
 
     public int updateBoard(BoardDTO params);
 
-    public int deleteBoard(Long idx);
+    public int deleteBoard(Integer idx);
 
     public List<BoardDTO> selectBoardList();
 
