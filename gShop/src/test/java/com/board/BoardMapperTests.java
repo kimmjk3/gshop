@@ -52,7 +52,7 @@ class BoardMapperTests {
     @Test
     public void testOfSelectDetail() {
 
-        BoardDTO board = boardMapper.selectBoardDetail((long) 1);
+        BoardDTO board = boardMapper.selectBoardDetail((Integer) 1);
         try {
             String boardJson = new ObjectMapper().writeValueAsString(board);
 
@@ -77,7 +77,7 @@ class BoardMapperTests {
 
         int result = boardMapper.updateBoard(params);
         if (result == 1) {
-            BoardDTO board = boardMapper.selectBoardDetail((long) 1);
+            BoardDTO board = boardMapper.selectBoardDetail((Integer) 1);
             try {
                 String boardJson = new ObjectMapper().writeValueAsString(board);
 
@@ -96,9 +96,9 @@ class BoardMapperTests {
 
         BoardDTO params = new BoardDTO();
 
-        int result = boardMapper.deleteBoard((long) 1);
+        int result = boardMapper.deleteBoard((Integer) 1);
         if (result == 1) {
-            BoardDTO board = boardMapper.selectBoardDetail((long) 1);
+            BoardDTO board = boardMapper.selectBoardDetail((Integer) 1);
             try {
                 String boardJson = new ObjectMapper().writeValueAsString(board);
 
