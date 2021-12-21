@@ -267,8 +267,11 @@ INSERT INTO Post
         );
 
 select * from user;
+SELECT * FROM post;
+
+
 select * from product;
 SELECT * FROM board;
-SELECT * FROM post;
+
 
 

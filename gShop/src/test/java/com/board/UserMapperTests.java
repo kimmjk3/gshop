@@ -15,6 +15,7 @@ class UserMapperTests {
     @Autowired
     private UserMapper userMapper;
 
+    // 회원가입
     @Test
     public void testOfInsert() {
         UserDTO params = new UserDTO();
@@ -35,6 +36,7 @@ class UserMapperTests {
 
     }
 
+    // 회원조회
     @Test
     public void testOfSelectDetail() {
 
@@ -52,6 +54,7 @@ class UserMapperTests {
         }
     }
 
+    // 수정
     @Test
     public void testOfUpdate() {
         UserDTO params = new UserDTO();
@@ -77,6 +80,7 @@ class UserMapperTests {
 
     }
 
+    // 삭제
     @Test
     public void testOfDelete() {
         int result = userMapper.deleteUser((String) "testid");
