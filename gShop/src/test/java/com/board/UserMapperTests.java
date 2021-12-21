@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.board.domain.UserDTO;
 import com.board.mapper.UserMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 class UserMapperTests {
@@ -30,6 +32,66 @@ class UserMapperTests {
         int result = userMapper.insertUser(params);
 
         System.out.println("결과:" + result + "입니다.");
+
+    }
+
+    @Test
+    public void testOfSelectDetail() {
+
+        UserDTO user = userMapper.selectUserDetail("testid");
+
+        try {
+            String userJson = new ObjectMapper().writeValueAsString(user);
+
+            System.out.println("===================");
+            System.out.println(userJson);
+            System.out.println("===================");
+
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testOfUpdate() {
+        UserDTO params = new UserDTO();
+        params.setUserPW("0070");
+        params.setUserAddress1("11111");
+        params.setUserAddress2("변경된주소1");
+        params.setUserAddress3("변경한주소2");
+        params.setUserID((String) "testid");
+
+        int result = userMapper.updateUser(params);
+        if (result == 1) {
+            UserDTO user = userMapper.selectUserDetail((String) "testid");
+            try {
+                String userJson = new ObjectMapper().writeValueAsString(user);
+
+                System.out.println("===================");
+                System.out.println(userJson);
+                System.out.println("===================");
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Test
+    public void testOfDelete() {
+        int result = userMapper.deleteUser((String) "testid");
+        if (result == 1) {
+            UserDTO user = userMapper.selectUserDetail((String) "testid");
+            try {
+                String userJson = new ObjectMapper().writeValueAsString(user);
+                System.out.println("===================");
+                System.out.println(userJson);
+                System.out.println("===================");
+
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 }
