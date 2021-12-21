@@ -2,7 +2,7 @@
 SpringBoot 쇼핑몰 프로젝트
 
 - 기능명세서  
-https://docs.google.com/spreadsheets/d/1-noMtdoSYFrEHCvEqH1a_TbnPL4spSN1F8fKFGgbDP0/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1qKGDPm_QKEdnMAhCOZM0VFUGjZuh0_eT0l6w15kcq_c/edit#gid=179035865
 
 - ERD  
 https://www.erdcloud.com/d/e7wmgRxm8JNh33hdQ
