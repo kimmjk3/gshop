@@ -52,13 +52,12 @@
     <update id="updateBoard" parameterType="BoardDTO">
         UPDATE Post
         SET
-              board_Number = #{boardNumber}
-            , post_Title = #{postTitle}
+              post_Title = #{postTitle}
             , post_Contents = #{postContents}
             , post_Category = #{postCategory}
             , post_Score = #{postScore}
             , post_Correct = NOW()
-            , user_ID = #{userID}
+            
         WHERE
             post_Number = #{postNumber}
     </update>
