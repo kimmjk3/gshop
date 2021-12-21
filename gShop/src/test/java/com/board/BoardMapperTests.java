@@ -18,6 +18,7 @@ class BoardMapperTests {
     @Autowired
     private BoardMapper boardMapper;
 
+    // 게시글 작성
     @Test
     public void testOfInsert() {
 
@@ -49,6 +50,7 @@ class BoardMapperTests {
 
     }
 
+    // 글 보기
     @Test
     public void testOfSelectDetail() {
 
@@ -65,6 +67,7 @@ class BoardMapperTests {
         }
     }
 
+    // 글 수정
     @Test
     public void testOfUpdate() {
         BoardDTO params = new BoardDTO();
@@ -91,6 +94,7 @@ class BoardMapperTests {
         }
     }
 
+    // 게시글 삭제
     @Test
     public void testOfDelete() {
 
@@ -112,19 +116,7 @@ class BoardMapperTests {
         }
     }
 
-    @Test
-    public void testMultipleInsert() {
-        for (int i = 2; i <= 50; i++) {
-            BoardDTO params = new BoardDTO();
-            params.setBoardNumber(1);
-            params.setPostTitle(i + "번 게시글 제목");
-            params.setPostContents(i + "번 게시글 내용");
-            params.setPostCategory(1);
-            params.setPostScore(5);
-            params.setUserID("idid1234");
-        }
-    }
-
+    // 게시글 전체 조회
     @Test
     public void testSelectList() {
         int boardTotalCount = boardMapper.selectBoardTotalCount();
