@@ -6,6 +6,7 @@ import com.board.domain.BoardDTO;
 
 public interface BoardService {
 
+    //
     public boolean registerBoard(BoardDTO params);
 
     public BoardDTO getBoardDetail(Integer postNumber);
