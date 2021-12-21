@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BoardDTO {
-    private int postNumber;
+    private Integer postNumber;
     private int boardNumber;
     private String postTitle;
     String postContents;
