@@ -13,15 +13,15 @@ public class UserController {
     private UserService userService;
 
     // 회원가입 매핑
-    @GetMapping(value = "/user/join.do")
+    @GetMapping(value = "/gshop/join.do")
     public String openUserJoin(Model model) {
-        return "user/join";
+        return "gshop/join";
     }
 
     // 로그인 매핑
-    @GetMapping("/user/login.do")
+    @GetMapping("/gshop/login.do")
     public String openLogin(Model model) {
-        return "user/login";
+        return "gshop/login";
     }
 
 }
