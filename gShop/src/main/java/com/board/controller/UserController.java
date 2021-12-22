@@ -12,9 +12,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/board/join.do")
+    @GetMapping(value = "/user/join.do")
     public String openUserJoin(Model model) {
-        return "board/join";
+        return "user/join";
     }
 
 }

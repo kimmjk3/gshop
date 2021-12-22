@@ -2,9 +2,77 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>회원가입페이지</title>
 </head>
 <body>
+	<div class="container">
+		<div class="py-5 text-center">
 
+			<h2>회원가입</h2>
+
+		</div>
+		<div class="col-md-12 order-md-1">
+			<h4>기본정보</h4>
+			<hr>
+
+			<form action="login.do" method="post">
+
+			<div>
+				<label for="userID">아이디:</label> <input id="userID" name="userID" type="text" maxlength="16" placeholder="영문, 영문+숫자 8 ~16자">
+			</div>
+
+			<div>
+				<label for="userPW">비밀번호:</label> <input id="userPW" name="userPW" type="password" />
+
+			</div>
+
+			<div>
+				<span>비밀번호확인:</span> <input id="userPW" name="userPW" type="password" />
+
+			</div>
+
+			<div>
+				<label for="userName">이름:</label> <input id="userName" name="userName" type="text" maxlength="8" placeholder="한글 또는 영문8자 이내">
+
+			</div>
+
+			<div>
+				<span>성별:</span> <input type="radio" name="userGender" value=1 checked />남자 <input type="radio" name="userGender" value=2 checked />여자
+
+			</div>
+
+			<div>
+				<label for="userDOB">생년월일</label> <input type="text" id="userDOB" name="userDOB" maxlength="8" placeholder="8자리숫자" />
+			</div>
+
+			<div>
+				<span>주소</span> <input type="text" id="userAddress1" name="userAddress1" placeholder="우편번호" />
+			</div>
+			<input type="text" id="userAddress2" name="userAddress2" placeholder="기본주소" />
+		</div>
+		<input type="text" id="userAddress3" name="userAddress3" placeholder="상세주소" />
+	</div>
+
+
+	</div>
+
+	<div>
+		<label for="userPhone">연락처</label> <input type="text" id="userPhone" name="userPhone" placeholder=" -빼고 11자리" maxlength="11" />
+
+	</div>
+
+	<div>
+		<label for="userEmail">이메일</label> <input type="email" id="userEmail" name="userEmail" />
+
+	</div>
+
+	<input type="submit" value="회원가입" />
+
+	</form>
+
+
+
+
+	</div>
 </body>
 </html>
