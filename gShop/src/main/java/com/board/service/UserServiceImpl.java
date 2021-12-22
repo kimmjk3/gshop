@@ -10,19 +10,13 @@ import com.board.mapper.UserMapper;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper userMapper;
+    UserMapper usermapper;
 
     @Override
-    public boolean JoinUser(UserDTO params) {
-        int queryResult = 0;
+    public void insertUser(UserDTO params) throws Exception {
 
-        if (params.getUserID() == null) {
-            queryResult = userMapper.insertUser(params);
-        } else {
-            queryResult = userMapper.updateUser(params);
-        }
+        usermapper.insertUser(params);
 
-        return (queryResult == 1) ? true : false;
     }
 
 }

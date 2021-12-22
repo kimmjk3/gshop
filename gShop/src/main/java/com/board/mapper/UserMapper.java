@@ -9,7 +9,8 @@ import com.board.domain.UserDTO;
 @Mapper
 public interface UserMapper {
 
-    public int insertUser(UserDTO params);
+    // 회원가입
+    public void insertUser(UserDTO params);
 
     public UserDTO selectUserDetail(String userID);
 

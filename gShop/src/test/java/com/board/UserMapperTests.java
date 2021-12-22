@@ -17,7 +17,7 @@ class UserMapperTests {
 
     // 회원가입
     @Test
-    public void testOfInsert() {
+    public void insertUser() throws Exception {
         UserDTO params = new UserDTO();
         params.setUserID("testid");
         params.setUserPW("123456");
@@ -30,9 +30,7 @@ class UserMapperTests {
         params.setUserPhone("010-1111-1111");
         params.setUserEmail("test@naver.com");
 
-        int result = userMapper.insertUser(params);
-
-        System.out.println("결과:" + result + "입니다.");
+        userMapper.insertUser(params);
 
     }
 

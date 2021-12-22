@@ -4,6 +4,7 @@ import com.board.domain.UserDTO;
 
 public interface UserService {
 
-    public boolean JoinUser(UserDTO params);
+    // 회원가입
+    public void insertUser(UserDTO params) throws Exception;
 
 }
