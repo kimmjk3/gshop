@@ -7,14 +7,14 @@ import lombok.Setter;
 @Setter
 public class BoardDTO {
     private Integer postNumber;
-    private int boardNumber;
+    private Integer boardNumber;
     private String postTitle;
     String postContents;
-    int postCategory;
-    int postScore;
+    Integer postCategory;
+    Integer postScore;
     String postInputDate;
-    String postCorrent;
+    String postCorrect;
     String postDeleteDate;
-    int postRecommend;
+    Integer postRecommend;
     String userID;
 }
