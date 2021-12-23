@@ -12,11 +12,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper usermapper;
 
+//회원가입 데이터 입력
     @Override
     public void insertUser(UserDTO params) throws Exception {
 
         usermapper.insertUser(params);
 
+    }
+
+//로그인
+    @Override
+    public UserDTO userLogin(UserDTO params) throws Exception {
+
+        return usermapper.userLogin(params);
     }
 
 }

@@ -48,7 +48,15 @@ DEFAULT
 <select id="userLogin" resultType="com.board.domain.UserDTO">
 
     SELECT 
-           user_ID, user_Name
+           user_ID, 
+           user_Name,
+           user_Gender, 
+           user_DOB,
+           user_Address1,
+           user_Address2,
+           user_Address3,
+           user_Phone,
+           user_Email
     FROM
             User
     WHERE
