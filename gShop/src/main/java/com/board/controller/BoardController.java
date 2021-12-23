@@ -69,4 +69,22 @@ public class BoardController {
 
         return "gshop/list";
     }
+
+    @GetMapping(value = "/gshop/view.do")
+    public String openBoardDetail(@RequestParam(value = "postNumber", required = false) Integer postNumber,
+            Model model) {
+        if (postNumber == null) {
+            // TODO => 올바르지 않은 접근이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
+            return "redirect:/gshop/list.do";
+        }
+
+        BoardDTO board = boardService.getBoardDetail(postNumber);
+        if (board == null || board.getPostDeleteDate() != null) {
+            // TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
+            return "redirect:/gshop/list.do";
+        }
+        model.addAttribute("board", board);
+
+        return "gshop/view";
+    }
 }
