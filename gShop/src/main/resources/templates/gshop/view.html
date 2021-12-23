@@ -108,4 +108,28 @@
         </div>
         <!-- /.box-content -->
     </th:block>
+    
+        <th:block layout:fragment="script">
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+
+            function deleteBoard(postNumber) {
+
+                if (confirm(postNumber + "번 게시글을 삭제할까요?")) {
+                    var uri = /*[[ @{/gshop/delete.do} ]]*/;
+                    var html = "";
+
+                    html += '<form name="dataForm" action="'+uri+'" method="post">';
+                        html += '<input type="hidden" name="postNumber" value="'+postNumber+'" />';
+                    html += '</form>';
+
+                    $("body").append(html);
+                    document.dataForm.submit();
+                }
+            }
+            /*[- end of function -]*/
+
+            /*]]>*/
+        </script>
+    </th:block>
 </html>
