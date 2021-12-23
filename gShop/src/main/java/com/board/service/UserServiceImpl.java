@@ -10,21 +10,35 @@ import com.board.mapper.UserMapper;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserMapper usermapper;
+    UserMapper userMapper;
 
-//회원가입 데이터 입력
     @Override
-    public void insertUser(UserDTO params) throws Exception {
+    public boolean registerUser(UserDTO params) {
+        int queryResult = 0;
 
-        usermapper.insertUser(params);
-
+        if (params.getUserID() == null) {
+            queryResult = userMapper.insertUser(params);
+        } else {
+            queryResult = userMapper.updateUser(params);
+        }
+        return (queryResult == 1) ? true : false;
     }
 
-//로그인
     @Override
-    public UserDTO userLogin(UserDTO params) throws Exception {
+    public UserDTO getUserDetail(String userID) {
+        return userMapper.selectUserDetail(userID);
+    }
 
-        return usermapper.userLogin(params);
+    @Override
+    public boolean deleteUser(String userID) {
+        int queryResult = 0;
+
+        UserDTO user = userMapper.selectUserDetail(userID);
+        if (user != null && user.getUserSecessionDate() == null) {
+            queryResult = userMapper.deleteUser(userID);
+        }
+
+        return (queryResult == 1) ? true : false;
     }
 
 }
