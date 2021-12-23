@@ -3,21 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인페이지</title>
- <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 </head>
 <body>
-  <div class="login-form">
-    <form>
-      <input type="text" name="email" class="text-field" placeholder="아이디">
-      <input type="password" name="password" class="text-field" placeholder="비밀번호">
-      <input type="submit" value="로그인" class="submit-btn">
-    </form>
- 
-    <div class="links">
-      <a href="#">비밀번호를 잊어버리셨나요?</a>
+<div class="container">
+    <h3 >로그인</h3>
+<form action="" method="post">
+
+    <div>
+    <lable>아이디</lable>
+    <input id="userID" name="userID" />
     </div>
-  </div>
+    <div>
+        <lable>비밀번호</lable>
+        <input id="userPW" name="userPW" />
+    </div>
+   <input type="submit" value="로그인"/>
+   <input type="button" value="회원가입" onclick="location.href='/gshop/join.do'" />
+
+
 
 </form>
 </div>

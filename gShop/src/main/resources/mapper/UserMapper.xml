@@ -44,6 +44,19 @@ DEFAULT
 
 )
 </insert>
+<!-- 로그인처리 -->
+<select id="userLogin" resultType="com.board.domain.UserDTO">
+
+    SELECT 
+           user_ID, user_Name
+    FROM
+            User
+    WHERE
+            user_ID = #{userID} 
+    AND
+            user_PW = #{userPW}
+
+</select>
 <!-- 회원정보 보기 -->
 <select id="selectUserDetail" parameterType="String" resultType="UserDTO">
         SELECT
@@ -78,5 +91,6 @@ DEFAULT
             
 
 </update>
+
 
 </mapper>

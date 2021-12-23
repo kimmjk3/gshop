@@ -34,6 +34,23 @@ class UserMapperTests {
 
     }
 
+    // 로그인 테스트
+    @Test
+    public void userLogin() throws Exception {
+
+        UserDTO params = new UserDTO();
+        /* 올바른 아이디 비번 입력 */
+        params.setUserID("test");
+        params.setUserPW("0070");
+        /* 다른 아이디 비번 입력 */
+//        params.setUserID("test22");
+//        params.setUserPW("111");
+
+        userMapper.userLogin(params);
+        System.out.println("결과값:" + userMapper.userLogin(params));
+
+    }
+
     // 회원조회
     @Test
     public void testOfSelectDetail() {

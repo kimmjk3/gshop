@@ -12,6 +12,9 @@ public interface UserMapper {
     // 회원가입
     public void insertUser(UserDTO params);
 
+    // 로그인
+    public UserDTO userLogin(UserDTO params);
+
     public UserDTO selectUserDetail(String userID);
 
     public int updateUser(UserDTO params);
