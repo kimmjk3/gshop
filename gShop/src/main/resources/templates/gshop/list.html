@@ -27,11 +27,13 @@
                 </thead>
                 <tbody>
                     <tr th:if="${not #lists.isEmpty( boardList )}" th:each="row : ${boardList}">
+                        <td th:text="${row.postNumber}"></td>
                         <td class="text-left">
                             <a th:href="@{/gshop/view.do( postNumber=${row.postNumber} )}" th:text="${row.postTitle}"></a>
                         </td>
                         <td th:text="${row.userID}"></td>
-                        <td th:text="${#temporals.format( row.postInputDate, 'yyyy-MM-dd' )}"></td>
+                        <td th:text="${row.postInputDate}"></td>
+                        <!-- <td th:text="${#temporals.format( row.postInputDate, 'yyyy-MM-dd' )}"></td> -->
                         <td th:text="${row.postRecommend}"></td>
                     </tr>
                     <tr th:unless="${not #lists.isEmpty( boardList )}">
