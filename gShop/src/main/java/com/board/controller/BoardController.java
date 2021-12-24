@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.board.constant.Method;
 import com.board.domain.BoardDTO;
 import com.board.service.BoardService;
+import com.board.util.UiUtils;
 
 @Controller
-public class BoardController {
+public class BoardController extends UiUtils {
 
     @Autowired
     private BoardService boardService;
@@ -35,31 +37,41 @@ public class BoardController {
         return "gshop/write";
     }
 
+    /*
+     * @PostMapping(value = "/gshop/register.do") public String registerBoard(final
+     * BoardDTO params) { try { boolean isRegistered =
+     * boardService.registerBoard(params); if (isRegistered == false) {
+     * System.out.println("게시글 등록 실패"); // TODO => 게시글 등록에 실패하였다는 메시지를 전달 } } catch
+     * (DataAccessException e) { System.out.println("게시글 번호 : " +
+     * params.getPostNumber()); System.out.println(params.getUserID());
+     * System.out.println(params.getBoardNumber());
+     * System.out.println(params.getPostCategory());
+     * System.out.println(params.getPostScore());
+     * System.out.println(params.getPostTitle());
+     * System.out.println(params.getPostContents()); System.out.println("DB처리 문제");
+     * // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는 메시지를 전달
+     * 
+     * } catch (Exception e) { System.out.println("시스템 문제"); // TODO => 시스템에 문제가
+     * 발생하였다는 메시지를 전달 }
+     * 
+     * return "redirect:/gshop/list.do"; }
+     */
+
     @PostMapping(value = "/gshop/register.do")
-    public String registerBoard(final BoardDTO params) {
+    public String registerBoard(final BoardDTO params, Model model) {
         try {
             boolean isRegistered = boardService.registerBoard(params);
             if (isRegistered == false) {
-                System.out.println("게시글 등록 실패");
-                // TODO => 게시글 등록에 실패하였다는 메시지를 전달
+                return showMessageWithRedirect("게시글 등록에 실패하였습니다.", "/gshop/list.do", Method.GET, null, model);
             }
         } catch (DataAccessException e) {
-            System.out.println("게시글 번호 : " + params.getPostNumber());
-            System.out.println(params.getUserID());
-            System.out.println(params.getBoardNumber());
-            System.out.println(params.getPostCategory());
-            System.out.println(params.getPostScore());
-            System.out.println(params.getPostTitle());
-            System.out.println(params.getPostContents());
-            System.out.println("DB처리 문제");
-            // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는 메시지를 전달
+            return showMessageWithRedirect("데이터베이스 처리 과정에 문제가 발생하였습니다.", "/gshop/list.do", Method.GET, null, model);
 
         } catch (Exception e) {
-            System.out.println("시스템 문제");
-            // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
+            return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/gshop/list.do", Method.GET, null, model);
         }
 
-        return "redirect:/gshop/list.do";
+        return showMessageWithRedirect("게시글 등록이 완료되었습니다.", "/gshop/list.do", Method.GET, null, model);
     }
 
     @GetMapping(value = "/gshop/list.do")
@@ -88,25 +100,39 @@ public class BoardController {
         return "gshop/view";
     }
 
+    /*
+     * @PostMapping(value = "/gshop/delete.do") public String
+     * deleteBoard(@RequestParam(value = "postNumber", required = false) Integer
+     * postNumber) { if (postNumber == null) { // TODO => 올바르지 않은 접근이라는 메시지를 전달하고,
+     * 게시글 리스트로 리다이렉트 return "redirect:/gshop/list.do"; }
+     * 
+     * try { boolean isDeleted = boardService.deleteBoard(postNumber); if (isDeleted
+     * == false) { // TODO => 게시글 삭제에 실패하였다는 메시지를 전달 } } catch (DataAccessException
+     * e) { // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는 메시지를 전달
+     * 
+     * } catch (Exception e) { // TODO => 시스템에 문제가 발생하였다는 메시지를 전달 }
+     * 
+     * return "redirect:/gshop/list.do"; }
+     */
+
     @PostMapping(value = "/gshop/delete.do")
-    public String deleteBoard(@RequestParam(value = "postNumber", required = false) Integer postNumber) {
+    public String deleteBoard(@RequestParam(value = "postNumber", required = false) Integer postNumber, Model model) {
         if (postNumber == null) {
-            // TODO => 올바르지 않은 접근이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
-            return "redirect:/gshop/list.do";
+            return showMessageWithRedirect("올바르지 않은 접근입니다.", "/gshop/list.do", Method.GET, null, model);
         }
 
         try {
             boolean isDeleted = boardService.deleteBoard(postNumber);
             if (isDeleted == false) {
-                // TODO => 게시글 삭제에 실패하였다는 메시지를 전달
+                return showMessageWithRedirect("게시글 삭제에 실패하였습니다.", "/gshop/list.do", Method.GET, null, model);
             }
         } catch (DataAccessException e) {
-            // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는 메시지를 전달
+            return showMessageWithRedirect("데이터베이스 처리 과정에 문제가 발생하였습니다.", "/gshop/list.do", Method.GET, null, model);
 
         } catch (Exception e) {
-            // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
+            return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/gshop/list.do", Method.GET, null, model);
         }
 
-        return "redirect:/gshop/list.do";
+        return showMessageWithRedirect("게시글 삭제가 완료되었습니다.", "/gshop/list.do", Method.GET, null, model);
     }
 }
