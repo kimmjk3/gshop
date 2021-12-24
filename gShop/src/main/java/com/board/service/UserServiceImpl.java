@@ -15,12 +15,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean registerUser(UserDTO params) {
         int queryResult = 0;
+        System.out.println(params);
 
-        if (params.getUserID() == null) {
-            queryResult = userMapper.insertUser(params);
-        } else {
-            queryResult = userMapper.updateUser(params);
-        }
+        queryResult = userMapper.insertUser(params);
+
         return (queryResult == 1) ? true : false;
     }
 
