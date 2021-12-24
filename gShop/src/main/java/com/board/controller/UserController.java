@@ -42,4 +42,11 @@ public class UserController {
         }
         return "redirect:/gshop/login.do";
     }
+
+    @GetMapping(value = "/gshop/login.do") // 로그인 주소
+    public String openUserLogin(Model model) {
+        System.out.println("로그인페이지 진입");
+        return "gshop/login";
+    }
+
 }
