@@ -1,7 +1,5 @@
 package com.board.mapper;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 
 import com.board.domain.UserDTO;
@@ -9,11 +7,8 @@ import com.board.domain.UserDTO;
 @Mapper
 public interface UserMapper {
 
-    // 회원가입
-    public void insertUser(UserDTO params);
-
-    // 로그인
-    public UserDTO userLogin(UserDTO params);
+    // 회원가입값 입력
+    public int insertUser(UserDTO params);
 
     public UserDTO selectUserDetail(String userID);
 
@@ -21,6 +16,7 @@ public interface UserMapper {
 
     public int deleteUser(String userID);
 
-    public List<UserDTO> selectUserList();
+    // 로그인
+    public UserDTO userLogin(UserDTO params);
 
 }
