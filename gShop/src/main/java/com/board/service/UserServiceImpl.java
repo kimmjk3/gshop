@@ -39,4 +39,11 @@ public class UserServiceImpl implements UserService {
         return (queryResult == 1) ? true : false;
     }
 
+    @Override
+    public UserDTO userLoginService(UserDTO params) {
+
+        return userMapper.userLogin(params);
+
+    }
+
 }

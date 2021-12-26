@@ -45,10 +45,11 @@ DEFAULT
 )
 </insert>
 <!-- 로그인처리 -->
-<select id="userLogin" resultType="com.board.domain.UserDTO">
+<select id="userLogin" resultType="UserDTO">
 
     SELECT 
-           user_ID, 
+           user_ID,
+           user_PW,
            user_Name,
            user_Gender, 
            user_DOB,

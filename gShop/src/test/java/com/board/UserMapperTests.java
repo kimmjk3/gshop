@@ -98,4 +98,16 @@ class UserMapperTests {
         }
 
     }
+
+    @Test
+    public void testUserLogin() {
+        UserDTO params = new UserDTO();
+
+        params.setUserID("testid");
+        params.setUserPW("12345678");
+
+        UserDTO result = userMapper.userLogin(params);
+        System.out.println("결과:" + result);
+    }
+
 }
