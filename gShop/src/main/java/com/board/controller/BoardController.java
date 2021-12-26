@@ -117,6 +117,8 @@ public class BoardController extends UiUtils {
 
     @PostMapping(value = "/gshop/delete.do")
     public String deleteBoard(@RequestParam(value = "postNumber", required = false) Integer postNumber, Model model) {
+        System.out.println("/gshop/delete.do 실행됨");
+
         if (postNumber == null) {
             return showMessageWithRedirect("올바르지 않은 접근입니다.", "/gshop/list.do", Method.GET, null, model);
         }
