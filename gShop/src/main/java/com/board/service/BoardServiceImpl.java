@@ -21,6 +21,8 @@ public class BoardServiceImpl implements BoardService {
 
         if (params.getPostNumber() == null) {
             queryResult = boardMapper.insertBoard(params);
+        } else {
+            queryResult = boardMapper.updateBoard(params);
         }
         return (queryResult == 1) ? true : false;
     }

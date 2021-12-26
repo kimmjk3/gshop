@@ -63,8 +63,7 @@
 
 		<div class="btn_wrap text-center">
 			<a th:href="@{/gshop/list.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a> <a
-				th:href="@{/gshop/write.do( postNumber=${board.postNumber} )}" class="btn btn-primary waves-effect waves-light"
-			>수정하기</a>
+				th:href="@{/gshop/write.do( postNumber=${board.postNumber} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
 			<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deleteBoard([[ ${board.postNumber} ]])">삭제하기</button>
 		</div>
 	</div>
@@ -72,28 +71,29 @@
 	<!-- /.card-content -->
 
 
-
-	<script th:inline="javascript">
+        <script th:inline="javascript">
             /*<![CDATA[*/
 
-            function deleteBoard(postNumber) {
+            function deleteBoard(idx) {
 
-                if (confirm(postNumber + "번 게시글을 삭제할까요?")) {
-                    var uri = /*[[ @{/gshop/delete.do} ]]*/null;
+                if (confirm(idx + "번 게시글을 삭제할까요?")) {
+                    var uri = /*[[ @{/board/delete.do} ]]*/null;
                     var html = "";
 
                     html += '<form name="dataForm" action="'+uri+'" method="post">';
-                        html += '<input type="hidden" name="postNumber" value="'+postNumber+'" />';
+                        html += '<input type="hidden" name="idx" value="'+idx+'" />';
                     html += '</form>';
 
                     $("body").append(html);
                     document.dataForm.submit();
+                    
                 }
             }
             /*[- end of function -]*/
 
             /*]]>*/
         </script>
+
 
 	<!--   html분리 -->
 	<script>
