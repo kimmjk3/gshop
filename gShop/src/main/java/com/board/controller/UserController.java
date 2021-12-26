@@ -59,7 +59,7 @@ public class UserController {
     // 로그인 처리
     @PostMapping(value = "/gshop/login.do")
     public String loginPOST(HttpServletRequest request, UserDTO params, HttpSession session) {
-        System.out.println("로그인 메서드 진입");
+        // System.out.println("로그인 메서드 진입");
         // System.out.println("전달된 데이터:" + params);
 
         UserDTO userLo = userService.userLoginService(params);
