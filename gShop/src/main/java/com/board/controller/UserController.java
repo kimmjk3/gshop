@@ -60,11 +60,11 @@ public class UserController {
     @PostMapping(value = "/gshop/login.do")
     public String loginPOST(HttpServletRequest request, UserDTO params, HttpSession session) {
         System.out.println("로그인 메서드 진입");
-        System.out.println("전달된 데이터:" + params);
+        // System.out.println("전달된 데이터:" + params);
 
         UserDTO userLo = userService.userLoginService(params);
         // String test =userLo.getUserPW();
-        System.out.println("입력된 데이터:" + params);
+        // System.out.println("입력된 데이터:" + params);
 
         if (userLo == null) { // 일치하지 않은 아이디와 비밀번호 입력 할 경우
             session.setAttribute("params", null);
@@ -73,13 +73,13 @@ public class UserController {
             session.setAttribute("params", userLo); // 일치하는 아이디, 비밀번호 입력 할 경우 (로그인성공)
         }
 
-        return "redirect:/gshop/main.do";
+        return "redirect:/gshop/index.do";
     }
 
     // 메인 페이지 진입
-    @GetMapping(value = "/gshop/main.do") // 회원가입 주소
+    @GetMapping(value = "/gshop/index.do") // 회원가입 주소
     public String openUserMain(Model model) {
         System.out.println("로그인 페이지 진입");
-        return "gshop/main";
+        return "gshop/index";
     }
 }
