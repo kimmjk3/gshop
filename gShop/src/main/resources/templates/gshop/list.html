@@ -1,72 +1,63 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-    <th:block layout:fragment="title">
-        <title>This page is a list page</title>
-    </th:block>
 
-    <th:block layout:fragment="search">
-        <form action="#" id="searchform-header" class="searchform js__toggle active pull-right">
-            <input type="search" placeholder="Search..." class="input-search">
-            <button class="mdi mdi-magnify button-search" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-        </form>
-    </th:block>
+<head>
 
-    <th:block layout:fragment="content">
-        <div class="table-responsive clearfix">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>등록일</th>
-                        <th>추천수</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:if="${not #lists.isEmpty( boardList )}" th:each="row : ${boardList}">
-                        <td th:text="${row.postNumber}"></td>
-                        <td class="text-left">
-                            <a th:href="@{/gshop/view.do( postNumber=${row.postNumber} )}" th:text="${row.postTitle}"></a>
-                        </td>
-                        <td th:text="${row.userID}"></td>
-                        <td th:text="${row.postInputDate}"></td>
-                        <!-- <td th:text="${#temporals.format( row.postInputDate, 'yyyy-MM-dd' )}"></td> -->
-                        <td th:text="${row.postRecommend}"></td>
-                    </tr>
-                    <tr th:unless="${not #lists.isEmpty( boardList )}">
-                        <td colspan="5">조회된 결과가 없습니다.</td>
-                    </tr>
-                </tbody>
-            </table>
- 
-            <div class="btn_wrap text-right">
-                <a th:href="@{/gshop/write.do}" class="btn btn-primary waves-effect waves-light">Write</a>
-            </div>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-            <th:block layout:fragment="paging">
-                <nav aria-label="Page navigation" class="text-center">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </th:block>
-        </div>
-    </th:block>
+<title>Shop Homepage - Start Bootstrap Template</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/bootstrap/css/shop-homepage.css" rel="stylesheet">
+<!-- html분리 -->
+<script src="/js/includeHTML.js"></script>
+</head>
+<body>
+	<!-- Navigation 분리 -->
+	<nav include-html="/html/nav.html"></nav>
+
+	<div style = "width:70%; text-align:center; margin-left:auto;margin-right:auto;">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>등록일</th>
+					<th>추천수</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${not #lists.isEmpty( boardList )}" th:each="row : ${boardList}">
+					<td th:text="${row.postNumber}"></td>
+					<td>
+						<a th:href="@{/gshop/view.do( postNumber=${row.postNumber} )}" th:text="${row.postTitle}"></a>
+					</td>
+					<td th:text="${row.userID}"></td>
+					<td th:text="${row.postInputDate}"></td>
+					<!-- <td th:text="${#temporals.format( row.postInputDate, 'yyyy-MM-dd' )}"></td> -->
+					<td th:text="${row.postRecommend}"></td>
+				</tr>
+				<tr th:unless="${not #lists.isEmpty( boardList )}">
+					<td colspan="5">조회된 결과가 없습니다.</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="btn_wrap text-right">
+			<a th:href="@{/gshop/write.do}" class="btn btn-primary waves-effect waves-light">글쓰기</a>
+		</div>
+	</div>
+
+	<!--   html분리 -->
+	<script>
+		includeHTML();
+	</script>
+</body>
 </html>
