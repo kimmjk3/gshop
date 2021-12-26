@@ -1,9 +1,26 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="gshop/layout/basic">
-<th:block layout:fragment="title">
-        <title>회원가입 페이지</title>
-    </th:block>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>회원가입 페이지</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="/bootstrap/css/shop-homepage.css" rel="stylesheet">
+<!-- html분리 -->
+<script src="/js/includeHTML.js"></script>
+</head>
 <th: block layout:fragment="content">
+    <!-- Navigation 분리 -->
+    <nav include-html="/html/nav.html"></nav>
+    
 	<div class="card-content">
 		<form class="form-horizontal" th:action="@{/gshop/join.do}" th:object="${user}" method="post" onsubmit="return registerUser(this)">
 			<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
@@ -38,9 +55,8 @@
 			<div class="form-group">
 				<label for="userGender" class="col-sm-2 control-label">성별</label>
 				<div class="col-sm-10">
-				<!-- <input type="text" th:field="*{userGender}" class="form-control" placeholder="한글 또는 영문8자 이내" maxlength="8" /> -->
-					<input type="radio" th:field="*{userGender}" value=1 checked />남자 
-					<input type="radio" th:field="*{userGender}" value=2 checked />여자 
+					<!-- <input type="text" th:field="*{userGender}" class="form-control" placeholder="한글 또는 영문8자 이내" maxlength="8" /> -->
+					<input type="radio" th:field="*{userGender}" value=1 checked />남자 <input type="radio" th:field="*{userGender}" value=2 checked />여자
 				</div>
 			</div>
 			<div class="form-group">
@@ -115,6 +131,8 @@
             /*]]>*/
   
             </script>
+            <!-- html분리 -->
+            <script>includeHTML();</script>
 
 	</th:block>
 </html>

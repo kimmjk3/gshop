@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="gshop/layout/basic">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <th:block layout:fragment="title">
         <title>this is view page</title>
     </th:block>
@@ -116,7 +116,7 @@
             function deleteBoard(postNumber) {
 
                 if (confirm(postNumber + "번 게시글을 삭제할까요?")) {
-                    var uri = /*[[ @{/gshop/delete.do} ]]*/;
+                    var uri = /*[[ @{/gshop/delete.do} ]]*/null;
                     var html = "";
 
                     html += '<form name="dataForm" action="'+uri+'" method="post">';
