@@ -87,6 +87,8 @@
         <script th:inline="javascript">
             /*<![CDATA[*/
 
+            	console.log("${session.userLo}");
+            	
             function deleteBoard(postNumber) {
 
                 if (confirm(postNumber + "번 게시글을 삭제할까요?")) {

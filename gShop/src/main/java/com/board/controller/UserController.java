@@ -67,10 +67,10 @@ public class UserController {
         // System.out.println("입력된 데이터:" + params);
 
         if (userLo == null) { // 일치하지 않은 아이디와 비밀번호 입력 할 경우
-            session.setAttribute("params", null);
+            session.setAttribute("userLo", null);
             return "redirect:/gshop/login.do";
         } else {
-            session.setAttribute("params", userLo); // 일치하는 아이디, 비밀번호 입력 할 경우 (로그인성공)
+            session.setAttribute("userLo", userLo); // 일치하는 아이디, 비밀번호 입력 할 경우 (로그인성공)
         }
 
         return "redirect:/gshop/index.do";
