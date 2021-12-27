@@ -76,6 +76,14 @@ public class UserController {
         return "redirect:/gshop/index.do";
     }
 
+    // 로그아웃
+    @GetMapping(value = "/gshop/logout") // 회원가입 주소
+    public String logout(HttpSession session) {
+        // 세션제거
+        session.invalidate();
+        return "redirect:/gshop/index.do";
+    }
+
     // 메인 페이지 진입
     @GetMapping(value = "/gshop/index.do") // 회원가입 주소
     public String openUserMain(Model model) {
