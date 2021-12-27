@@ -42,16 +42,16 @@ a {
 					<!-- <li class="nav-item active"><a class="nav-link" href="#">관심상품 <span class="sr-only">(current)</span></a></li> -->
 					<li class="nav-item"><a class="nav-link" href="#">장바구니</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
-					<li class="nav-item"><a class="nav-link" th:if="${session.userLo == null}" href="/gshop/login.do">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" th:if="${session.userLo != null}" href="/gshop/logout">로그아웃</a></li>
+					<li class="nav-item"><a class="nav-link" th:if="${session.userID == null}" href="/gshop/login.do">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" th:if="${session.userID != null}" href="/gshop/logout">로그아웃</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
 	<!-- 세션찍기 -->
-	<div style="color: red;" th:text="*{session.userLo}"></div>
-	<!-- 	<h2 style="color:blue;" th:text = "${session.userLo}"></h2> -->
+	<div style="color: red;" th:text="*{session.userID}"></div>
+	<!-- 	<h2 style="color:blue;" th:text = "${session.userID}"></h2> -->
 
 	<!-- Page Content -->
 	<div class="container">

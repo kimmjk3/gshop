@@ -62,15 +62,15 @@ public class UserController {
         // System.out.println("로그인 메서드 진입");
         // System.out.println("전달된 데이터:" + params);
 
-        UserDTO userLo = userService.loginUser(params);
+        UserDTO user = userService.loginUser(params);
         // String test =userLo.getUserPW();
         // System.out.println("입력된 데이터:" + params);
 
-        if (userLo == null) { // 일치하지 않은 아이디와 비밀번호 입력 할 경우
-            session.setAttribute("userLo", null);
+        if (user == null) { // 일치하지 않은 아이디와 비밀번호 입력 할 경우
+            session.setAttribute("userID", null);
             return "redirect:/gshop/login.do";
         } else {
-            session.setAttribute("userLo", userLo); // 일치하는 아이디, 비밀번호 입력 할 경우 (로그인성공)
+            session.setAttribute("userID", user.getUserID()); // 일치하는 아이디, 비밀번호 입력 할 경우 (로그인성공)
         }
 
         return "redirect:/gshop/index.do";
