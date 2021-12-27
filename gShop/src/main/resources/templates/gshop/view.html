@@ -46,37 +46,37 @@
 
 	<div style="width: 70%; margin-left: auto; margin-right: auto;">
 		<form th:object="${board}">
-			<table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd;">
+			<table class="table table-bordered" style="text-align: center; border: 3px solid #dddddd;">
 				<thead>
 					<tr>
-						<td colspan="4" style="background-color: #eeeeee;">게시글</td>
+						<td colspan="4">게시글</td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td style="width: 20%;">게시판</td>
+						<td style="width: 20%;background-color: #eeeeee;">게시판</td>
 						<td style="width: 30%;" th:text="*{boardNumber}"></td>
-						<td style="width: 20%;">카테고리</td>
+						<td style="width: 20%;background-color: #eeeeee;">카테고리</td>
 						<td style="width: 30%;" th:text="*{postCategory}"></td>
 					</tr>
 					<tr>
-						<td style="width: 20%;">작성자</td>
+						<td style="width: 20%; background-color: #eeeeee;">작성자</td>
 						<td style="width: 30%;" th:text="*{userID}"></td>
-						<td style="width: 20%;">등록일</td>
+						<td style="width: 20%; background-color: #eeeeee;">등록일</td>
 						<td style="width: 30%;" th:text="*{postInputDate}"></td>
 					</tr>
 					<tr>
-						<td style="width: 20%;">별점</td>
+						<td style="width: 20%; background-color: #eeeeee;">별점</td>
 						<td style="width: 30%;" th:text="*{postScore}"></td>
-						<td style="width: 20%;">추천수</td>
+						<td style="width: 20%; background-color: #eeeeee;">추천수</td>
 						<td style="width: 30%;" th:text="*{postRecommend}"></td>
 					</tr>
 					<tr>
-						<td colspan="1">제목</td>
+						<td colspan="1" style = "background-color: #eeeeee;">제목</td>
 						<td colspan="3" th:text="*{postTitle}"></td>
 					</tr>
 					<tr>
-						<td colspan="4">내용</td>
+						<td colspan="4" style = "background-color: #eeeeee;">내용</td>
 					</tr>
 					<tr>
 						<td style="height: 400px; text-align: left;" colspan="4" th:text="*{postContents}"></td>
