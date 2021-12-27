@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO userLoginService(UserDTO params) {
+    public UserDTO loginUser(UserDTO params) {
 
         return userMapper.userLogin(params);
 

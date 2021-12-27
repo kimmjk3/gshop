@@ -62,7 +62,7 @@ public class UserController {
         // System.out.println("로그인 메서드 진입");
         // System.out.println("전달된 데이터:" + params);
 
-        UserDTO userLo = userService.userLoginService(params);
+        UserDTO userLo = userService.loginUser(params);
         // String test =userLo.getUserPW();
         // System.out.println("입력된 데이터:" + params);
 
