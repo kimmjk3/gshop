@@ -40,9 +40,9 @@ a {
 					<div style="text-align:center;"><img style="width:100%" src="/image/im1.jpg" alt=""></div>
 				</div>
 
-				<div style="width: 30%; position:fixed; right:0; margin-top: 60px;">
+				<div style="width: 30%; position:fixed; right:10px; margin-top: 60px;">
 					<div style=" margin-bottom: 10px;">타이폰 마르스프로 베스타 기계식 키보드</div>
-                    <div style="margin-top: 10px; margin-bottom: 10px; text-align:right;">174,000원</div>
+                    <div style="margin-top: 10px; padding-bottom: 30px; text-align:right; border-bottom:1px dashed #bbb;">174,000원</div>
 					<div style="display: flex; margin-left: 10px; text-align: center; margin-top: 30px; margin-bottom: 30px;">
 						<div style="width: 50%; text-align: center;">키보드색상</div>
 						<select style="width: 50%; text-align: center;" name="keyboardColor">
@@ -69,8 +69,11 @@ a {
                             <option value="저소음적축">저소음적축</option>
                         </select>
                     </div>
-                    <div><button class="btn btn-dark" style="width:100%;">BUY NOW</button></div>
-                    <div><button class="btn btn-primary" style="width:100%;">ADD CART</button></div>
+                    <div style="padding-top:30px;border-top:1px dashed #bbb;">
+                        <div><a th:href="@{#}" class="btn btn-dark" style="width:100%;">뒤로가기</a></div>
+                        <div><a th:href="@{#}" class="btn btn-primary" style="width:100%;">뒤로가기</a></div>
+                    </div>
+
 				</div>
 			</div>
 		</div>
