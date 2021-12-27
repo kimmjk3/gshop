@@ -18,13 +18,32 @@
 <link href="/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="/bootstrap/css/shop-homepage.css" rel="stylesheet">
-<!-- html분리 -->
-<script src="/js/includeHTML.js"></script>
 </head>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark <!-- fixed-top -->">
+	<div class="container">
+		<a class="navbar-brand" href="/gshop/index">GamingGearShop</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" href="/gshop/list.do">리뷰게시판</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">관심상품</a></li>
+				<!-- <li class="nav-item active"><a class="nav-link" href="#">관심상품 <span class="sr-only">(current)</span></a></li> -->
+				<li class="nav-item"><a class="nav-link" href="#">장바구니</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
+				<li class="nav-item"><a class="nav-link" th:if="${session.userLo == null}" href="/gshop/login.do">로그인</a></li>
+				<li class="nav-item"><a class="nav-link" th:if="${session.userLo != null}" href="#">로그아웃</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
 <th:block layout:fragment="content">
-    <!-- Navigation 분리 -->
-    <nav include-html="/html/nav.html"></nav>
-    
 	<div class="card-content">
 		<form class="form-horizontal" th:action="@{/gshop/join.do}" th:object="${user}" method="post" onsubmit="return registerUser(this)">
 			<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
@@ -97,17 +116,17 @@
 
 	</div>
 
-	</th:block>
-	
-       <!-- Footer -->
-    <footer class="py-5 bg-dark" style = "margin-top:50px;">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-        </div>
-        <!-- /.container -->
-    </footer>
-	<th:block layout:fragment="script">
-		<script th:inline="javascript">
+</th:block>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark" style="margin-top: 50px;">
+	<div class="container">
+		<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+	</div>
+	<!-- /.container -->
+</footer>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
 		/*<![CDATA[*/
             
             function registerUser(form){
@@ -143,8 +162,5 @@
             /*]]>*/
   
             </script>
-            <!-- html분리 -->
-            <script>includeHTML();</script>
-
-	</th:block>
+</th:block>
 </html>

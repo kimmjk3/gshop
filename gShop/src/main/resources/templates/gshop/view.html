@@ -18,13 +18,31 @@
 <link href="/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="/bootstrap/css/shop-homepage.css" rel="stylesheet">
-<!-- html분리 -->
-<script src="/js/includeHTML.js"></script>
 </head>
 
 <body>
-	<!-- Navigation 분리 -->
-	<nav include-html="/html/nav.html"  style = "margin-bottom:20px;"></nav>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark <!-- fixed-top -->">
+		<div class="container">
+			<a class="navbar-brand" href="/gshop/index">GamingGearShop</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="/gshop/list.do">리뷰게시판</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">관심상품</a></li>
+					<!-- <li class="nav-item active"><a class="nav-link" href="#">관심상품 <span class="sr-only">(current)</span></a></li> -->
+					<li class="nav-item"><a class="nav-link" href="#">장바구니</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
+					<li class="nav-item"><a class="nav-link" th:if="${session.userLo == null}" href="/gshop/login.do">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" th:if="${session.userLo != null}" href="#">로그아웃</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 	<div style="width: 70%; margin-left: auto; margin-right: auto;">
 		<form th:object="${board}">
@@ -60,56 +78,52 @@
 					<tr>
 						<td colspan="4">내용</td>
 					</tr>
-                    <tr>
-                        <td style = "height:400px; text-align:left;" colspan="4" th:text="*{postContents}"></td>
-                    </tr>
+					<tr>
+						<td style="height: 400px; text-align: left;" colspan="4" th:text="*{postContents}"></td>
+					</tr>
 				</tbody>
 			</table>
 		</form>
 
-            <div style = "text-align:right;">
-                <a th:href="@{/gshop/list.do}" class="btn btn-info">뒤로가기</a>
-                <a th:href="@{/gshop/write.do( postNumber=${board.postNumber} )}" class="btn btn-primary">수정하기</a>
-                <button type="button" th:onclick="deleteBoard([[ ${board.postNumber} ]])" class="btn btn-danger">삭제하기</button>
-            </div>
+		<div style="text-align: right;">
+			<a th:href="@{/gshop/list.do}" class="btn btn-info">뒤로가기</a> <a th:href="@{/gshop/write.do( postNumber=${board.postNumber} )}"
+				class="btn btn-primary"
+			>수정하기</a>
+			<button type="button" th:onclick="deleteBoard([[ ${board.postNumber} ]])" class="btn btn-danger">삭제하기</button>
+		</div>
 	</div>
 	</div>
-	
-	   <!-- Footer -->
-    <footer class="py-5 bg-dark" style = "margin-top:50px;">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-        </div>
-        <!-- /.container -->
-    </footer>
+
+	<!-- Footer -->
+	<footer class="py-5 bg-dark" style="margin-top: 50px;">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+		</div>
+		<!-- /.container -->
+	</footer>
 	<!-- /.card-content -->
 
-        <script th:inline="javascript">
-            /*<![CDATA[*/
+	<script th:inline="javascript">
+		/*<![CDATA[*/
 
-            	console.log("${session.userLo}");
-            	
-            function deleteBoard(postNumber) {
+		console.log("${session.userLo}");
 
-                if (confirm(postNumber + "번 게시글을 삭제할까요?")) {
-                    var uri = /*[[ @{/gshop/delete.do} ]]*/null;
-                    var html = "";
+		function deleteBoard(postNumber) {
 
-                    html += '<form name="dataForm" action="'+uri+'" method="post">';
-                        html += '<input type="hidden" name="postNumber" value="'+postNumber+'" />';
-                    html += '</form>';
+			if (confirm(postNumber + "번 게시글을 삭제할까요?")) {
+				var uri = /*[[ @{/gshop/delete.do} ]]*/null;
+				var html = "";
 
-                    $("body").append(html);
-                    document.dataForm.submit();
-                }
-            }
-            /*[- end of function -]*/
-            /*]]>*/
-        </script>
+				html += '<form name="dataForm" action="'+uri+'" method="post">';
+				html += '<input type="hidden" name="postNumber" value="'+postNumber+'" />';
+				html += '</form>';
 
-	<!--   html분리 -->
-	<script>
-        includeHTML();
-    </script>
+				$("body").append(html);
+				document.dataForm.submit();
+			}
+		}
+		/*[- end of function -]*/
+		/*]]>*/
+	</script>
 </body>
 </html>

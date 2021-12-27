@@ -14,54 +14,61 @@
 <link href="/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="/bootstrap/css/shop-homepage.css" rel="stylesheet">
-<!-- html분리 -->
-<script src="/js/includeHTML.js"></script>
-</head>
-<th: block layout:fragment="content">
 
-	<!-- Navigation 분리 -->
-	<nav include-html="/html/nav.html"></nav>
+</head>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark <!-- fixed-top -->">
+	<div class="container">
+		<a class="navbar-brand" href="/gshop/index">GamingGearShop</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" href="/gshop/list.do">리뷰게시판</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">관심상품</a></li>
+				<!-- <li class="nav-item active"><a class="nav-link" href="#">관심상품 <span class="sr-only">(current)</span></a></li> -->
+				<li class="nav-item"><a class="nav-link" href="#">장바구니</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
+				<li class="nav-item"><a class="nav-link" th:if="${session.userLo == null}" href="/gshop/login.do">로그인</a></li>
+				<li class="nav-item"><a class="nav-link" th:if="${session.userLo != null}" href="#">로그아웃</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
 
 <div class="container">
-	<form  th:action="@{/gshop/login.do}" th:object="${user}" method="post">
-		
-			<h2 style="text-align: center">로그인</h2>
-			<hr>
+	<form th:action="@{/gshop/login.do}" th:object="${user}" method="post">
 
-			
-            <div class="form-group">
-                <label for="userID">아이디</label> 
-                <input type="text" th:field="*{userID}"  class="form-control" maxlength="16" placeholder="아이디를 입력하세요.">
-            </div>
-            
+		<h2 style="text-align: center">로그인</h2>
+		<hr>
 
-            <div class="form-group">
-                <label for="userPW">비밀번호</label> 
-                <input type="password" th:field="*{userPW}"  class="form-control" placeholder="비밀번호를 입력하세요." maxlength="16" />
-            </div>
-           
 
-			<div style="text-align: center">
-				<input type="submit" value="로그인" class="btn btn-primary" /> 
-				<a class = "btn btn-info" th:href="@{/gshop/join.do}">회원가입</a>
-                
-			</div>
-			</form>
+		<div class="form-group">
+			<label for="userID">아이디</label> <input type="text" th:field="*{userID}" class="form-control" maxlength="16" placeholder="아이디를 입력하세요.">
 		</div>
-		
-       <!-- Footer -->
-    <footer class="py-5 bg-dark" style = "margin-top:50px;">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-        </div>
-        <!-- /.container -->
-    </footer>
-		
-		
-	
-</th:block>
-<!--   html분리 -->
-<script>
-	includeHTML();
-</script>
+
+
+		<div class="form-group">
+			<label for="userPW">비밀번호</label> <input type="password" th:field="*{userPW}" class="form-control" placeholder="비밀번호를 입력하세요." maxlength="16" />
+		</div>
+
+
+		<div style="text-align: center">
+			<input type="submit" value="로그인" class="btn btn-primary" /> <a class="btn btn-info" th:href="@{/gshop/join.do}">회원가입</a>
+
+		</div>
+	</form>
+</div>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark" style="margin-top: 50px;">
+	<div class="container">
+		<p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+	</div>
+	<!-- /.container -->
+</footer>
 </html>
