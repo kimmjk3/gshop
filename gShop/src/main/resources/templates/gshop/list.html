@@ -39,7 +39,7 @@
 			</div>
 		</div>
 	</nav>
-	<div style = "visibility:hidden;">공백삽입</div>
+	<div style="visibility: hidden;">공백삽입</div>
 
 	<h2 style="text-align: center; margin-bottom: 20px;">리뷰게시판</h2>
 
@@ -72,9 +72,26 @@
 		</table>
 
 		<div class="btn_wrap text-right">
-			<a th:href="@{/gshop/write.do}" class="btn btn-primary waves-effect waves-light">글쓰기</a>
+			<!-- <a th:href="@{/gshop/write.do}" class="btn btn-primary waves-effect waves-light">글쓰기</a> -->
+			<a th:if="${session.userID != null}"th:href="@{/gshop/write.do}" class="btn btn-primary waves-effect waves-light">글쓰기</a>
+			<button type="button" th:if="${session.userID == null}" th:onclick="writeAlert()" class="btn btn-primary waves-effect waves-light">글쓰기</button>
+
 		</div>
 	</div>
+
+
+	<script th:inline="javascript">
+        /*<![CDATA[*/
+
+        console.log("${session.userLo}");
+
+        function writeAlert() {
+            alert("로그인이 필요합니다. 로그인페이지로 이동합니다.");
+            location.href="/gshop/login.do";
+        }
+        /*[- end of function -]*/
+        /*]]>*/
+    </script>
 
 	<!-- Footer -->
 	<footer class="py-5 bg-dark" style="margin-top: 50px;">
