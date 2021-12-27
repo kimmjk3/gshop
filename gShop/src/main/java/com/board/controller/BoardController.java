@@ -2,6 +2,9 @@ package com.board.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
@@ -58,8 +61,16 @@ public class BoardController extends UiUtils {
      */
 
     @PostMapping(value = "/gshop/register.do")
-    public String registerBoard(final BoardDTO params, Model model) {
+    public String registerBoard(final BoardDTO params, Model model, HttpServletRequest request, HttpSession session) {
         try {
+
+            // 세션값 userID params 입력
+            String userID = null;
+            if (session.getAttribute("userID") != null) {
+                userID = (String) session.getAttribute("userID");
+            }
+            params.setUserID(userID);
+
             boolean isRegistered = boardService.registerBoard(params);
             if (isRegistered == false) {
                 return showMessageWithRedirect("게시글 등록에 실패하였습니다.", "/gshop/list.do", Method.GET, null, model);
