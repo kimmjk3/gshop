@@ -20,7 +20,7 @@
 </head>
 <body>
 	<!-- Navigation 분리 -->
-	<nav include-html="/html/nav.html"></nav>
+	<nav include-html="/html/nav.html"  style = "margin-bottom:20px;"></nav>
 
 	<div class="card-content">
 		<form class="form-horizontal" th:action="@{/gshop/register.do}" th:object="${board}" method="post" onsubmit="return registerBoard(this)">
