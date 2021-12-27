@@ -7,7 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @RequestMapping("/gshop/index")
-    public void main() {
+    public void index() {
+
+    }
+
+    @RequestMapping("/gshop/sell")
+    public void sell() {
 
     }
 }
