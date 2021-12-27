@@ -13,6 +13,6 @@ public interface UserService {
     public boolean deleteUser(String userID);
 
     // 로그인
-    public UserDTO userLoginService(UserDTO params);
+    public UserDTO loginUser(UserDTO params);
 
 }
