@@ -56,9 +56,11 @@
 				<tbody>
 					<tr>
 						<td style="width: 20%;background-color: #eeeeee;">게시판</td>
-						<td style="width: 30%;" th:text="*{boardNumber}"></td>
+						<td th:if="*{boardNumber} == 1">리뷰게시판</td>
+						<td th:if="*{boardNumber} == 2">Q&A게시판</td>
 						<td style="width: 20%;background-color: #eeeeee;">카테고리</td>
-						<td style="width: 30%;" th:text="*{postCategory}"></td>
+                        <td th:if="*{postCategory} == 1">키보드</td>
+                        <td th:if="*{postCategory} == 2">마우스</td>
 					</tr>
 					<tr>
 						<td style="width: 20%; background-color: #eeeeee;">작성자</td>
@@ -68,7 +70,11 @@
 					</tr>
 					<tr>
 						<td style="width: 20%; background-color: #eeeeee;">별점</td>
-						<td style="width: 30%;" th:text="*{postScore}"></td>
+                        <td th:if="*{postScore} == 1">1점</td>
+                        <td th:if="*{postScore} == 2">2점</td>
+                        <td th:if="*{postScore} == 3">3점</td>
+                        <td th:if="*{postScore} == 4">4점</td>
+                        <td th:if="*{postScore} == 5">5점</td>
 						<td style="width: 20%; background-color: #eeeeee;">추천수</td>
 						<td style="width: 30%;" th:text="*{postRecommend}"></td>
 					</tr>
