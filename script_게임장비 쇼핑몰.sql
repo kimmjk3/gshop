@@ -223,6 +223,18 @@ INSERT INTO `USER`(
 values
 	('idid1234','pwpw1234', '김명진', 1, '19961202', '123-456', '상세주소', '도로명주소', '010-3505-3471', 'kimmjk35@naver.com', default, null, default, default)
 	;
+
+#게시판 데이터삽입
+INSERT INTO `Board`(
+	`board_Number`,
+	`board_Name`,
+	`board_inputDate`,
+	`board_Correct`,
+	`board_DeleteDate`)
+values
+	(default, '리뷰', default, null, null)
+	;
+
 #상품 데이터삽입
 INSERT INTO `Product`(
 	`product_Number`,
@@ -240,16 +252,6 @@ values
 	(default, 1, 1, '마우수수', '20000', 3, '신제품 마우수수', default, default, null, null)
 	;
 
-#게시판 데이터삽입
-INSERT INTO `Board`(
-	`board_Number`,
-	`board_Name`,
-	`board_inputDate`,
-	`board_Correct`,
-	`board_DeleteDate`)
-values
-	(default, '리뷰', default, null, null)
-	;
 #게시글 데이터 삽입
 INSERT INTO Post 
 	VALUES (

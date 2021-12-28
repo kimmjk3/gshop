@@ -34,7 +34,7 @@ class BoardMapperTests {
 //        int result = boardMapper.insertBoard(params);
 //        System.out.println("결과는 " + result + "입니다");
 
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 1; i <= 5; i++) {
 
             BoardDTO params = new BoardDTO();
             params.setBoardNumber(1);
