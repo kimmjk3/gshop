@@ -1,4 +1,4 @@
-# shop
+# gshop
 SpringBoot 게임장비 쇼핑몰 프로젝트
 
 - 기능명세서  
